@@ -11,6 +11,9 @@ public class Engine {
     private final Cave firstCave = new Cave();
     private final Cave secondCave = new Cave();
     private final InputController input = new InputController();
+    int userChoice = -1;
+    final int ONE = 1;
+    final int TWO = 2;
 
     /**
      * Method which runs the game
@@ -27,8 +30,8 @@ public class Engine {
             secondCave.setDragon(friendlyDragon);
         }
         displayIntro();
-        int userChoice = input.getUserInput();
-        if (userChoice == 1) firstCave.determineFate();
+        while (userChoice != ONE && userChoice != TWO) {userChoice = input.getUserInput();}
+        if (userChoice == ONE) firstCave.determineFate();
         else secondCave.determineFate();
     }
 
@@ -40,7 +43,6 @@ public class Engine {
                 You are in a land full of dragons. In front of you,
                 you see two caves. In one cave, the dragon is friendly
                 and will share his treasure with you. The other dragon
-                is greedy and hungry and will eat you on sight\s
-                Which cave will you go into? (1 or 2)""");
+                is greedy and hungry and will eat you on sight\s""");
     }
 }
